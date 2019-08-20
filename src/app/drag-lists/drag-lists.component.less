@@ -1,0 +1,358 @@
+:host ::ng-deep {
+  height: 100%;
+  padding: 0px 0px;
+  
+  .topology-tree{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      .topology-tree-left{
+          width: 198px;
+          border-radius: 2.8px;
+          box-shadow: 6px 6px 16px 0 rgba(140, 110, 28, 0.12);
+          background-color: #fef1cf;
+          display: flex;
+          flex-direction: column;
+          z-index: 999;
+          flex-shrink: 0;
+         
+          padding-bottom: 40px;
+          .topology-tree-left-operate{
+              width: 100%;
+              height: 37px;
+              padding: 7px 13px 0 7px;
+              .square{
+                  width: 60px;
+                  height: 22px;
+                  transform: rotate(133deg);
+                  opacity: 0.3;
+                  background-blend-mode: darken;
+                  background-image: linear-gradient(to bottom, #d9b75f, #d9b75f);
+                  position: absolute;
+                  top: -7px;
+              }
+              .lock{
+                  width: 24px;
+                  height: 24px;
+                  float: right;
+                  border-radius: 50%;
+                  background-color: #fae7b5;
+                  border: solid 1px #ffb93d;
+                  cursor: pointer;
+              }
+          }
+          &.isLock>.topology-tree-left-operate>.lock{
+              background-color: #7f692d;
+          }
+          &.isLock>.topology-tree-left-module-wrap>.topology-tree-left-module>.cdk-drop-list>.topology-tree-left-lock{
+              ul{
+                  padding:0;
+                  li{
+                      padding: 0 11px;
+                      border-bottom:0;
+                      &:hover{
+                          border-bottom:0;
+                      }
+                  }
+                  &:last-child{
+                      border-bottom: 1px dashed #9b8345;
+                      margin-bottom: 6px;
+                  }
+              }
+              &:hover{
+                  background-color: #eadbb4;
+              }
+              li{
+                  &:hover{
+                      background-color: #eadbb4;
+                      border-bottom: solid 1px #d8c696;
+                  }
+              }
+          }
+          .topology-tree-left-module-wrap{
+              display: flex;
+              flex: 1;
+              flex-direction: column;
+              .topology-tree-left-module{
+                  margin: 8px;
+                  margin-bottom:6px;
+                  .topology-tree-left-unlock{
+                      ul:last-child{
+                          border-bottom: 1px dashed #9b8345;
+                          margin-bottom: 6px;
+                          li{
+                              border-bottom: 0;
+                          }
+                      }
+                  }
+                  ul{
+                      padding: 0 11px;
+                      margin-bottom: 0;
+                      &:hover{
+                          background-color: #f1ddac;
+                      }
+                      li{
+                          list-style: none;
+                          height: 33px;
+                          line-height: 33px;
+                          color: #b29956;
+                          font-size: 13px;
+                          font-weight: 500;
+                          border-bottom: solid 1px #d8c696;
+                      }
+                      li.isSkill{
+                          color: #6e591f;
+                      }
+                      &.disable{
+                          background-color: #fdf6e5;
+                          cursor: not-allowed;
+                      }
+                  }
+              }
+          }
+          &::after{
+              position: absolute;
+              bottom: 0px;
+              right: 0;
+              width: 0px;
+              height: 0px;
+              border-width: 0 0 18px 30px;
+              border-style: solid;
+              border-color: transparent transparent #f6f7fb;
+              background: #e7d6a8;
+              content: ' ';
+          }
+      }
+      .topology-tree-right-wrap{
+          display: flex;
+          height: 100%;
+          position: relative;
+          user-select: none;
+          .topology-tree-right{
+              display: flex;
+              flex: 1;
+              height: 100%;
+              flex-direction: column;
+              position: relative;
+              .topology-tree-title{
+                  width: 274px;
+                  height: 48px;
+                  background-color: #6e8ae5;
+                  padding:2px;
+                  margin: 0 auto;
+                  position: relative;
+                  &::after{
+                      position: absolute;
+                      left: 50%;
+                      bottom: -15px;
+                      width: 2px;
+                      height: 15px;
+                      background-color: #6e8ae5;
+                      content: ' ';
+                  }
+                  p{
+                      border: 1px solid #fff;
+                      text-align: center;
+                      color: #fff;
+                      line-height: 42px;
+                      font-size: 14px;
+                      font-weight: 500;
+                      margin-bottom: 0;
+                  }
+              }
+              .topology-tree-right-module-wrap{
+                  display: flex;
+                  flex: 1;
+                  padding: 0 20px;
+                  margin: 0 auto;
+                  height: 100%;
+                  .topology-tree-right-module{
+                      position: relative;
+                      width: 192px;
+                      margin-top: 27px;
+                      height: 100%;
+                      margin-right: 20px;
+                      flex-shrink: 0;
+                      .module-title{
+                          height: 40px;
+                          border: solid 2px #d2d2d3;
+                          padding: 4px;
+                          position: relative;
+                          .ant-input{
+                              height: 28px;
+                              border: solid 1px #d2d2d3;
+                              border-radius: 0;
+                              &:focus{
+                                  box-shadow:none;
+                              }
+                          }
+                          &:hover{
+                              border: solid 2px #6e8ae5;
+                              .module-delete{
+                                  display: block;
+                              }
+                              .ant-input{
+                                  border: solid 1px #6e8ae5;
+                              }
+                          }
+                          .module-delete{
+                              display: none;
+                              position: absolute;
+                              right: 0;
+                              bottom: 0;
+                              width: 30px;
+                              height: 38px;
+                              line-height: 38px;
+                              text-align: center;
+                              opacity: 0.7;
+                              background-color: #363c51;
+                              color: #fff;
+                          }
+                      }
+                      textarea.ant-input{
+                          border-color: #f6f7fb;
+                          background-color: #eff0f5;
+                          margin-bottom: 8px;
+                          font-size: 12px;
+                          color: #a2a7b9;
+                          resize: none;
+                      }
+                      .module-knowledge-skill{
+                          height: 100%;
+                          background-color: #eff0f5;
+                          padding: 8px 0;
+                          min-height: 200px;
+                          ul{
+                              padding:0;
+                              margin-bottom: 0;
+                              background-color: #eff0f5;
+                              li{
+                                  list-style: none;
+                                  height: 34px;
+                                  line-height: 34px;
+                                  font-size: 13px;
+                                  font-weight: 500;
+                                  color: #818182;
+                                  padding: 0px 13px 0px 23px;
+                                  user-select: none;
+                                  .knowledge-skill-delete{
+                                      display: none;
+                                  }
+                                  &:hover{
+                                      background-color: #dce1f9;
+                                      color: #6e8ae5;
+                                      .knowledge-skill-delete{
+                                          display: block;
+                                          float:right;
+                                          cursor: pointer;
+                                          font-weight: 700;
+                                          color: #000;
+                                          font-size: 16px;
+                                      }
+                                  }
+                                  
+                              }
+                              .isSkill{
+                                  color: #000;
+                              }
+                              
+                          }
+                      }
+                      &::before{
+                          position: absolute;
+                          left: 50%;
+                          top: -14px;
+                          width: 213px;
+                          height: 14px;
+                          border-left: solid 2px #6e8ae5;
+                          border-top: solid 2px #6e8ae5;
+                          content: ' ';
+                      }
+                      &:last-child{
+                          &::before{
+                              position: absolute;
+                              left: 50%;
+                              top: -14px;
+                              width: 2px;
+                              height: 14px;
+                              background-color: #6e8ae5;
+                              content: ' ';
+                          }
+                      }
+                      &:last-child{
+                          margin-right: 0;
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+  .cdk-drag-preview{
+      .list{
+          width: 200px;
+          list-style: none;
+          height: 34px;
+          line-height: 30px;
+          font-size: 14px;
+          font-weight: 500;
+          text-align: center;
+          color: #856e32;
+          border-radius: 4px;
+          box-shadow: 0 0 8px 0 rgba(96, 113, 223, 0.12);
+          border: dashed 2px #856e32;
+          background-color: #fef1cf;
+          padding:0;
+          background-image: url(/assets/img/ic-move-hang.png);
+          background-repeat: no-repeat;
+          background-position: 10px 50%;
+          position: relative;
+          z-index: 1000;
+      }
+      .wrap{
+          width: 200px;
+          position: relative;
+          .border1{
+              position: absolute;
+              width: 200px;
+              height: 30px;
+              border: dashed 2px #856e32;
+              border-radius: 4px;
+              left:0;
+              top: -15px;
+              opacity: .6;
+              transform: scale(.8);
+          }
+          .border2{
+              position: absolute;
+              width: 200px;
+              height: 20px;
+              border: dashed 2px #856e32;
+              border-radius: 4px;
+              left:0;
+              top: -8px;
+              opacity: .8;
+              transform: scale(.9);
+          }
+      }
+      
+  }
+
+  
+
+
+.topology-tree-right-cdkDrag.cdk-drag-preview{
+  list-style: none;
+  height: 34px;
+  line-height: 34px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0px 13px 0px 23px;
+  user-select: none;
+  background-color: #dce1f9;
+  color: #6e8ae5;
+  .knowledge-skill-delete{
+      display: none;
+  }
+}

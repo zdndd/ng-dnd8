@@ -1,0 +1,81 @@
+<div class="topology-tree" cdkDropListGroup>
+  <div class="topology-tree-left" [class.isLock]="lock">
+    <div class="topology-tree-left-operate" *ngIf="isModuleDesign">
+      <span class="square"></span>
+      <span class="lock" (click)="onLock($event)"></span>
+    </div>
+    <div class="topology-tree-left-module-wrap">
+      <div class="topology-tree-left-module" *ngIf='lock'>
+        <div cdkDropList [cdkDropListData]="lockData" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let mm of lockData" [cdkDragData]=mm class="topology-tree-left-cdkDrag topology-tree-left-lock"
+            cdkDrag>
+            <ul *ngFor="let item of mm">
+              <li id='{{item.id}}' [class.isSkill]="item.type == 2">
+                <div>
+                  {{item.title}}
+                </div>
+              </li>
+              <div *cdkDragPreview>
+                <div *ngIf="mm.length>1" class="wrap">
+                  <div class="border1"></div>
+                  <div class="border2"></div>
+                  <div class="list">
+                    {{item.title}}
+                  </div>
+                </div>
+                <div *ngIf="mm.length<=1" class="wrap">
+                  <div class="list">
+                    {{item.title}}
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="topology-tree-left-module" *ngIf='!lock'>
+        <div cdkDropList [cdkDropListData]="unlockData" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let module of lockData" class="topology-tree-left-unlock">
+            <ul *ngFor="let item of module" [cdkDragData]=item class="topology-tree-left-cdkDrag" cdkDrag>
+              <li id='{{item.id}}' [class.isSkill]="item.type == 2">
+                {{item.title}}
+              </li>
+              <div *cdkDragPreview>
+                <div class="list">
+                  {{item.title}}
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topology-tree-right-wrap">
+    <div class="topology-tree-right">
+
+      <div class="topology-tree-right-module-wrap">
+        <div class="topology-tree-right-module" *ngFor="let module of rightData.modules; index as i">
+          <div class="module-title">
+
+            <a class="module-delete" (click)="moduleDelete(module, i)">
+              <span class="icon-ic_xm_del"></span>
+            </a>
+          </div>
+
+          <div cdkDropList [cdkDropListData]="module.skills" class="module-knowledge-skill"
+            (cdkDropListDropped)="drop($event,module)">
+            <ul class="topology-tree-right-cdkDrag" *ngFor="let item of module.skills" cdkDrag cdkDragLockAxis="y">
+              <li *ngIf='item.title !==""'>
+                {{item.title}}
+                <span class="knowledge-skill-delete" (click)="skillDelete(module,item)">x</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
